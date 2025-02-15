@@ -1,48 +1,41 @@
 package teoria.presentacion_6;
 
 public class Cola {
+
     private int[] datos;
     private int frente;
-    private int finalCola;
-    private final int capacidad;
+    private int fin;
+    private int tamaño;
 
-    public Cola(int capacidadInicial) {
-        capacidad = capacidadInicial;
+    public Cola(int capacidad) {
         datos = new int[capacidad];
         frente = 0;
-        finalCola = -1; // La cola está vacía
+        fin = 0;
+        tamaño = 0;
     }
 
     public void encolar(int elemento) {
-        if (finalCola == capacidad - 1) {
-            throw new CapacityExceededException("La cola está llena");
-        }
-        datos[++finalCola] = elemento;
+        datos[fin] = elemento;
+        fin = (fin + 1) % datos.length;
+        tamaño++;
     }
 
     public int desencolar() {
-        if (frente > finalCola) {
-            throw new EmptyQueueException("La cola está vacía");
-        }
-        return datos[frente++];
+        int elemento = datos[frente];
+        frente = (frente + 1) % datos.length;
+        tamaño--;
+        return elemento;
     }
 
-    public boolean estaVacia() {
-        return frente > finalCola;
+    public int frente() {
+        return datos[frente];
     }
 
-    // Clases para representar excepciones
-    public static class EmptyQueueException extends RuntimeException {
-        public EmptyQueueException(String mensaje) {
-
-            super(mensaje);
-        }
+    public int tamaño() {
+        return tamaño;
     }
 
-    public static class CapacityExceededException extends RuntimeException {
-        public CapacityExceededException(String mensaje) {
-
-            super(mensaje);
-        }
+    public boolean esVacia() {
+        return tamaño == 0;
     }
 }

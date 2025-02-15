@@ -1,37 +1,38 @@
 package teoria.presentacion_6;
 
-public class Lista {
-    private int[] datos; // Arreglo para almacenar los elementos de la lista
-    private int tamaño; // Cantidad de elementos en la lista
-    private final int capacidad; // Capacidad máxima del arreglo (ahora es final)
+import java.util.Iterator;
 
-    public Lista(int capacidadInicial) {
-        capacidad = capacidadInicial;
+public class Lista implements Iterable<Integer> {
+
+    private int[] datos;
+    private int tamaño;
+
+    public Lista(int capacidad) {
         datos = new int[capacidad];
-        tamaño = 0; // La lista está vacía
+        tamaño = 0;
     }
 
-    public void insertar(int elemento) {
-        if (tamaño == capacidad) {
-            throw new CapacityExceededException("La lista está llena");
+    public void insertar(int elemento, int posicion) {
+        for (int i = tamaño; i > posicion; i--) {
+            datos[i] = datos[i - 1];
         }
-        datos[tamaño++] = elemento; // Inserta al final y aumenta el tamaño
+        datos[posicion] = elemento;
+        tamaño++;
     }
 
-    public int eliminar() {
-        if (tamaño == 0) {
-            throw new EmptyListException("La lista está vacía");
+    public void agregar(int elemento) {
+        datos[tamaño] = elemento;
+        tamaño++;
+    }
+
+    public void eliminar(int posicion) {
+        for (int i = posicion; i < tamaño - 1; i++) {
+            datos[i] = datos[i + 1];
         }
-        return datos[--tamaño]; // Elimina del final y reduce el tamaño
+        tamaño--;
     }
 
     public int obtener(int posicion) {
-        if (tamaño == 0) {
-            throw new EmptyListException("La lista está vacía");
-        }
-        if (posicion < 0 || posicion >= tamaño) {
-            throw new IndexOutOfBoundsException("Posición inválida");
-        }
         return datos[posicion];
     }
 
@@ -39,26 +40,32 @@ public class Lista {
         return tamaño;
     }
 
-    public boolean estaVacia() {
+    public boolean esVacia() {
         return tamaño == 0;
     }
 
-    // Clases para representar excepciones
-    public static class EmptyListException extends RuntimeException {
-        public EmptyListException(String mensaje) {
-            super(mensaje);
-        }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new IteradorLista();
     }
 
-    public static class IndexOutOfBoundsException extends RuntimeException {
-        public IndexOutOfBoundsException(String mensaje) {
-            super(mensaje);
-        }
-    }
+    private class IteradorLista implements Iterator<Integer> {
+        private int posicion = 0;
 
-    public static class CapacityExceededException extends RuntimeException {
-        public CapacityExceededException(String mensaje) {
-            super(mensaje);
+        @Override
+        public boolean hasNext() {
+            return posicion < tamaño;
+        }
+
+        @Override
+        public Integer next() {
+            if (!hasNext()) {
+                throw new java.util.NoSuchElementException();
+            }
+            int elemento = datos[posicion];
+            posicion++;
+            return elemento;
         }
     }
 }

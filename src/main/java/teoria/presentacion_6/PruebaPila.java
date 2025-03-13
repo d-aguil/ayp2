@@ -19,6 +19,6 @@ public class PruebaPila {
         System.out.println("Elemento desapilado: " + elemento);
 
         //
-        System.out.println("¿La pila está vacía?: " + pila.esVacia());
+        System.out.println("¿La pila está vacía?: " + pila.estaVacia());
     }
 }

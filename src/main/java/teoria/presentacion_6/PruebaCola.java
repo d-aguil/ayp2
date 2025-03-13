@@ -19,6 +19,6 @@ public class PruebaCola {
         System.out.println("Elemento desencolado: " + elemento);
 
         //
-        System.out.println("¿La cola está vacía?: " + cola.esVacia());
+        System.out.println("¿La cola está vacía?: " + cola.estaVacia());
     }
 }

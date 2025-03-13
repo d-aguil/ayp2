@@ -40,7 +40,7 @@ public class Lista implements Iterable<Integer> {
         return tamaño;
     }
 
-    public boolean esVacia() {
+    public boolean estaVacia() {
         return tamaño == 0;
     }
 

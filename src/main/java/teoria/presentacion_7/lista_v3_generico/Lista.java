@@ -4,16 +4,6 @@ import java.util.Objects;
 
 public class Lista<T> {
 
-    private static class Nodo<T> {
-        T dato;
-        Nodo siguiente;
-
-        Nodo(T dato) {
-            this.dato = dato;
-            this.siguiente = null;
-        }
-    }
-
     private Nodo<T> cabeza;
     private int size;
 

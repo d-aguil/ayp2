@@ -22,6 +22,6 @@ public class PruebaLista {
         lista.eliminar(2);
 
         //
-        System.out.println("¿La lista está vacía?: " + lista.esVacia());
+        System.out.println("¿La lista está vacía?: " + lista.estaVacia());
     }
 }

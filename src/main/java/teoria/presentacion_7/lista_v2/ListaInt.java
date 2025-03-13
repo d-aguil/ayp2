@@ -24,25 +24,6 @@ public class ListaInt {
         size++;
     }
 
-    public void add(int indice, int valor) {
-        if (indice < 0 || indice > size) {
-            throw new IndexOutOfBoundsException();
-        }
-        Nodo nuevoNodo = new Nodo(valor);
-        if (indice == 0) {
-            nuevoNodo.siguiente = cabeza;
-            cabeza = nuevoNodo;
-        } else {
-            Nodo temp = cabeza;
-            for (int i = 0; i < indice - 1; i++) {
-                temp = temp.siguiente;
-            }
-            nuevoNodo.siguiente = temp.siguiente;
-            temp.siguiente = nuevoNodo;
-        }
-        size++;
-    }
-
     public void remove(int indice) {
         if (indice < 0 || indice >= size) {
             throw new IndexOutOfBoundsException();
@@ -70,28 +51,10 @@ public class ListaInt {
         return temp.dato;
     }
 
-    public void set(int indice, int valor) {
-        if (indice < 0 || indice >= size) {
-            throw new IndexOutOfBoundsException();
-        }
-        Nodo temp = cabeza;
-        for (int i = 0; i < indice; i++) {
-            temp = temp.siguiente;
-        }
-        temp.dato = valor;
+    public boolean isEmpty() {
+        return size == 0;
     }
-
-    public int indexOf(int valor) {
-        Nodo temp = cabeza;
-        for (int i = 0; i < size; i++) {
-            if (temp.dato == valor) {
-                return i;
-            }
-            temp = temp.siguiente;
-        }
-        return -1;
-    }
-
+    
     public void listar() {
         Nodo temp = cabeza;
         while (temp != null) {

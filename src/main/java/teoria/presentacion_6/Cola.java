@@ -35,7 +35,7 @@ public class Cola {
         return tamaño;
     }
 
-    public boolean esVacia() {
+    public boolean estaVacia() {
         return tamaño == 0;
     }
 }

@@ -4,10 +4,15 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Nodo nodo1 = new Nodo(10);
+        Nodo nodo2 = new Nodo(20);
+        nodo1.siguiente = nodo2;
+
+
         ListaInt lista = new ListaInt();
-        lista.agregar(1);
-        lista.agregar(2);
-        lista.agregar(3);
+        lista.agregar(14);
+        lista.agregar(7);
+        lista.agregar(21);
         lista.listar();
     }
 }

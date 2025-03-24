@@ -26,4 +26,20 @@ public class ListaInt {
         System.out.println();
     }
 
+    public void eliminar(int valor){
+        if (cabeza == null) {
+            return;
+        }
+        if (cabeza.dato == valor) {
+            cabeza = cabeza.siguiente;
+            return;
+        }
+        Nodo temp = cabeza;
+        while (temp.siguiente != null && temp.siguiente.dato != valor) {
+            temp = temp.siguiente;
+        }
+        if (temp.siguiente != null) {
+            temp.siguiente = temp.siguiente.siguiente;
+        }
+    }
 }

@@ -6,30 +6,34 @@ import java.util.Comparator;
 public class Persona {
 
     private String nombre;
+    private String apellido;
     private int edad;
 
-    public Persona(String nombre, int edad) {
+    public Persona(String nombre, String apellido, int edad) {
         this.nombre = nombre;
+        this.apellido = apellido;
         this.edad = edad;
     }
 
     public String getNombre() {
+
         return nombre;
     }
 
-    public static void main(String[] args) {
-        Persona[] personas = new Persona[3];
-        personas[0] = new Persona("Juan", 30);
-        personas[1] = new Persona("Ana", 25);
-        personas[2] = new Persona("Pedro", 40);
+    public String getApellido() {
+        return apellido;
+    }
 
-        // Crear una instancia del comparador
-        ComparadorPorNombre comparador = new ComparadorPorNombre();
+    public int getEdad() {
+        return edad;
+    }
 
-        Arrays.sort(personas, comparador);
-
-        for (Persona persona : personas) {
-            System.out.println(persona);
-        }
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", edad=" + edad +
+                '}';
     }
 }

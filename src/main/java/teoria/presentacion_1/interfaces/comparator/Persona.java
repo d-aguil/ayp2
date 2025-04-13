@@ -26,7 +26,8 @@ public class Persona {
         // Crear una instancia del comparador
         ComparadorPorNombre comparador = new ComparadorPorNombre();
 
-        Arrays.sort(personas, comparador);
+        //Quiero ordenar por 2 comparadores
+        Arrays.sort(personas, Comparator.comparing(comparador).thenComparing(Persona::getNombre));
 
         for (Persona persona : personas) {
             System.out.println(persona);

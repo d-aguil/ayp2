@@ -24,6 +24,7 @@ public class EjemploHashModulo {
      * @return
      */
     public static int hash(int clave, int tamaño) {
+
         return clave % tamaño;
     }
 

@@ -7,13 +7,13 @@ import java.util.Queue;
 
 public class RecorridosArbol {
 
-    public List<Integer> preorden(NodoArbol raiz) {
+    public List<Integer> preorden(Nodo raiz) {
         List<Integer> resultado = new ArrayList<>();
         preordenRecursivo(raiz, resultado);
         return resultado;
     }
 
-    private void preordenRecursivo(NodoArbol nodo, List<Integer> resultado) {
+    private void preordenRecursivo(Nodo nodo, List<Integer> resultado) {
         if (nodo != null) {
             resultado.add(nodo.info);
             preordenRecursivo(nodo.izq, resultado);
@@ -21,13 +21,13 @@ public class RecorridosArbol {
         }
     }
 
-    public List<Integer> inorden(NodoArbol raiz) {
+    public List<Integer> inorden(Nodo raiz) {
         List<Integer> resultado = new ArrayList<>();
         inordenRecursivo(raiz, resultado);
         return resultado;
     }
 
-    private void inordenRecursivo(NodoArbol nodo, List<Integer> resultado) {
+    private void inordenRecursivo(Nodo nodo, List<Integer> resultado) {
         if (nodo != null) {
             inordenRecursivo(nodo.izq, resultado);
             resultado.add(nodo.info);
@@ -35,13 +35,13 @@ public class RecorridosArbol {
         }
     }
 
-    public List<Integer> postorden(NodoArbol raiz) {
+    public List<Integer> postorden(Nodo raiz) {
         List<Integer> resultado = new ArrayList<>();
         postordenRecursivo(raiz, resultado);
         return resultado;
     }
 
-    private void postordenRecursivo(NodoArbol nodo, List<Integer> resultado) {
+    private void postordenRecursivo(Nodo nodo, List<Integer> resultado) {
         if (nodo != null) {
             postordenRecursivo(nodo.izq, resultado);
             postordenRecursivo(nodo.der, resultado);
@@ -49,17 +49,17 @@ public class RecorridosArbol {
         }
     }
 
-    public List<Integer> porNiveles(NodoArbol raiz) {
+    public List<Integer> porNiveles(Nodo raiz) {
         List<Integer> resultado = new ArrayList<>();
         if (raiz == null) {
             return resultado;
         }
 
-        Queue<NodoArbol> cola = new LinkedList<>();
+        Queue<Nodo> cola = new LinkedList<>();
         cola.offer(raiz);
 
         while (!cola.isEmpty()) {
-            NodoArbol nodoActual = cola.poll();
+            Nodo nodoActual = cola.poll();
             resultado.add(nodoActual.info);
 
             if (nodoActual.izq != null) {

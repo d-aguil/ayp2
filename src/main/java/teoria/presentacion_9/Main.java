@@ -3,13 +3,13 @@ package teoria.presentacion_9;
 public class Main {
     public static void main(String[] args) {
         // Crear un árbol de ejemplo
-        NodoArbol raiz = new NodoArbol(10);
-        raiz.izq = new NodoArbol(5);
-        raiz.der = new NodoArbol(15);
-        raiz.izq.izq = new NodoArbol(3);
-        raiz.izq.der = new NodoArbol(7);
-        raiz.der.izq = new NodoArbol(12);
-        raiz.der.der = new NodoArbol(18);
+        Nodo raiz = new Nodo(10);
+        raiz.izq = new Nodo(5);
+        raiz.der = new Nodo(15);
+        raiz.izq.izq = new Nodo(3);
+        raiz.izq.der = new Nodo(7);
+        raiz.der.izq = new Nodo(12);
+        raiz.der.der = new Nodo(18);
 
         RecorridosArbol recorridos = new RecorridosArbol();
 

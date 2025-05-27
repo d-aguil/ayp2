@@ -41,6 +41,7 @@ public class Arbol {
 
     //insertar recursivo
     public void insertarRecursivo(int elemento) {
+
         raiz = insertarRecursivo(raiz, elemento);
     }
 
@@ -115,8 +116,10 @@ public class Arbol {
 
     //buscar
     public boolean buscar(int elemento) {
+
         return buscar(raiz, elemento);
     }
+
     private boolean buscar(Nodo nodo, int elemento) {
         if (nodo == null) {
             return false;

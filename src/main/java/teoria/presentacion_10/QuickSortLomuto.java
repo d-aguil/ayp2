@@ -1,6 +1,6 @@
 package teoria.presentacion_10;
 
-public class QuickSort {
+public class QuickSortLomuto {
     
     /**
      * Método principal para ordenar un array usando QuickSort
@@ -26,20 +26,25 @@ public class QuickSort {
      * y todos los mayores a la derecha del pivot
      */
     private static int partition(int[] arr, int low, int high) {
-        int pivot = arr[high]; // Elegimos el último elemento como pivot
-        int i = low - 1; // Índice del elemento más pequeño
-        
-        for (int j = low; j < high; j++) {
-            // Si el elemento actual es menor o igual al pivot
-            if (arr[j] <= pivot) {
-                i++;
+        // Usamos el primer elemento como pivot
+        int pivot = arr[low];
+
+        // recorremos desde el segundo elemento
+        int i = low + 1;
+
+        // Recorremos el array desde el segundo elemento hasta el final
+        for (int j = low + 1; j <= high; j++) {
+
+            // Si el elemento actual es menor que el pivot,
+            if (arr[j] < pivot) {
                 swap(arr, i, j);
+                i++;
             }
         }
-        
+
         // Coloca el pivot en su posición correcta
-        swap(arr, i + 1, high);
-        return i + 1;
+        swap(arr, low, i - 1);
+        return i - 1;
     }
 
     /**
@@ -55,6 +60,7 @@ public class QuickSort {
      * Método de conveniencia para ordenar todo el array
      */
     public static void quickSort(int[] arr) {
+
         quickSort(arr, 0, arr.length - 1);
     }
     
